@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management System</title>
+
+    <link rel="stylesheet" href="project1.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Employee Management System</h1>
+      <form id="main1">
+        <div id="topbox">
+          <label>
+            Name:
+            <input id="name" type="text" name="name" placeholder="Enter name" />
+            <div id="hide">
+              <br />
+              <small>minimum 2 character required</small>
+            </div>
+          </label>
+
+          <br /><br />
+
+          <label>
+            Email:
+            <input
+              id="mail"
+              type="text"
+              name="email"
+              placeholder="email"
+              onkeyup="validE()"
+            />
+            <div id="hide1">
+              <br />
+              <span id="emailError" style="color: red"></span>
+            </div>
+          </label>
+
+          <br /><br />
+
+          <label>
+            Address:
+            <textarea
+              name="address"
+              id="add"
+              placeholder="Write your address"
+            ></textarea>
+            <br />
+            <small>atleast 5 character required</small>
+          </label>
+
+          <br /><br />
+
+          <label>
+            Phone:
+            <input type="tel" name="phone" placeholder="Enter phone number" />
+            <br />
+            <small>phone number must be 10 digits</small>
+          </label>
+
+          <br /><br />
+        </div>
+        <div>
+          <p>Select your Gender</p>
+
+          <label>
+            <input type="radio" name="gender" value="male" />
+            Male
+          </label>
+
+          <label>
+            <input type="radio" name="gender" value="female" />
+            Female
+          </label>
+
+          <label>
+            <input type="radio" name="gender" value="other" />
+            Other
+          </label>
+          <br /><small>please select your gender</small>
+        </div>
+
+        <br /><br />
+        <div>
+          <p>Hobbies:</p>
+
+          <label>
+            <input type="checkbox" name="hobbies" value="cricket" />
+            Cricket
+          </label>
+
+          <label>
+            <input type="checkbox" name="hobbies" value="singing" />
+            Singing
+          </label>
+
+          <label>
+            <input type="checkbox" name="hobbies" value="gaming" />
+            Gaming
+          </label>
+
+          <label>
+            <input type="checkbox" name="hobbies" value="reading" />
+            Reading
+          </label>
+          <br />
+          <small>select one or more options</small>
+        </div>
+
+        <br /><br />
+        <div id="designation1">
+          <label for="designation">Designation:</label>
+
+          <select name="designation" id="designation">
+            <option value="">Select designation</option>
+            <option value="software_developer">Software Developer</option>
+            <option value="product_manager">Product Manager</option>
+            <option value="ai_engineer">AI Engineer</option>
+            <option value="ui_ux_designer">UI/UX Designer</option>
+          </select>
+          <br />
+          <small>select one options </small>
+        </div>
+        <br /><br />
+        <div id="btn">
+          <button id="btn1" type="submit">Submit</button>
+          <button id="btn2" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+    <table id="empTable" border="1" style="margin-top: 30px; width: 100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Gender</th>
+          <th>Hobbies</th>
+          <th>Designation</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <script src="project1.js"></script>
+  </body>
+</html>

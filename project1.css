@@ -1,0 +1,38 @@
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  color: black;
+  background-color: white;
+}
+.container {
+  width: 100vw;
+  margin: 40px auto;
+}
+
+h1 {
+  margin: 20px 10px;
+  padding: 20px;
+  color: rgb(3, 91, 61);
+}
+#hide,
+#hide1 {
+  display: none;
+}
+
+#btn1 {
+  background-color: green;
+  margin: 10px 50px;
+  border-radius: 20px;
+  height: 40px;
+  width: 70px;
+}
+
+#btn2 {
+  background-color: rgb(236, 136, 4);
+  margin: 10px 50px;
+  border-radius: 20px;
+  height: 40px;
+  width: 70px;
+}
