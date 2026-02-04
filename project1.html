@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Management System</title>
-
     <link rel="stylesheet" href="project1.css" />
   </head>
 
@@ -16,10 +15,6 @@
           <label>
             Name:
             <input id="name" type="text" name="name" placeholder="Enter name" />
-            <div id="hide">
-              <br />
-              <small>minimum 2 character required</small>
-            </div>
           </label>
 
           <br /><br />
@@ -48,8 +43,6 @@
               id="add"
               placeholder="Write your address"
             ></textarea>
-            <br />
-            <small>atleast 5 character required</small>
           </label>
 
           <br /><br />
@@ -57,8 +50,6 @@
           <label>
             Phone:
             <input type="tel" name="phone" placeholder="Enter phone number" />
-            <br />
-            <small>phone number must be 10 digits</small>
           </label>
 
           <br /><br />
@@ -80,7 +71,6 @@
             <input type="radio" name="gender" value="other" />
             Other
           </label>
-          <br /><small>please select your gender</small>
         </div>
 
         <br /><br />
@@ -106,8 +96,6 @@
             <input type="checkbox" name="hobbies" value="reading" />
             Reading
           </label>
-          <br />
-          <small>select one or more options</small>
         </div>
 
         <br /><br />
@@ -121,8 +109,6 @@
             <option value="ai_engineer">AI Engineer</option>
             <option value="ui_ux_designer">UI/UX Designer</option>
           </select>
-          <br />
-          <small>select one options </small>
         </div>
         <br /><br />
         <div id="btn">
@@ -131,21 +117,6 @@
         </div>
       </form>
     </div>
-    <table id="empTable" border="1" style="margin-top: 30px; width: 100%">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Gender</th>
-          <th>Hobbies</th>
-          <th>Designation</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
 
     <script src="project1.js"></script>
   </body>

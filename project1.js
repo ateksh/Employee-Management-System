@@ -1,11 +1,12 @@
 const form = document.getElementById("main1");
 const btn1 = document.getElementById("btn1");
 
-// email validations
+let employees = [];
+let editIndex = null;
+
 function validE() {
   const email = document.getElementById("mail").value.trim();
   const emailError = document.getElementById("emailError");
-
   const regex = /^\S+@\S+\.\S+$/;
 
   if (!regex.test(email)) {
@@ -17,10 +18,8 @@ function validE() {
   }
 }
 
-// form validationa
 function validateForm() {
   const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("mail").value.trim();
   const address = document.getElementById("add").value.trim();
   const phone = document.querySelector('input[name="phone"]').value.trim();
   const gender = document.querySelector('input[name="gender"]:checked');
@@ -65,7 +64,6 @@ function validateForm() {
   return true;
 }
 
-// submit
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -91,12 +89,10 @@ form.addEventListener("submit", function (e) {
     btn1.innerText = "Submit";
   }
 
-  sessionStorage.setItem("employees", JSON.stringify(employees));
   form.reset();
   renderTable();
 });
 
-// table
 function renderTable() {
   let table = document.getElementById("empTable");
 
@@ -105,6 +101,7 @@ function renderTable() {
     table.id = "empTable";
     table.border = "1";
     table.style.marginTop = "30px";
+    table.style.width = "100%";
 
     table.innerHTML = `
       <tr>
@@ -167,9 +164,6 @@ function editEmployee(index) {
 function deleteEmployee(index) {
   if (confirm("Are you sure you want to delete this record?")) {
     employees.splice(index, 1);
-    sessionStorage.setItem("employees", JSON.stringify(employees));
     renderTable();
   }
 }
-
-renderTable();
