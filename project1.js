@@ -1,8 +1,12 @@
 const form = document.getElementById("main1");
 const btn1 = document.getElementById("btn1");
 
-let employees = [];
+let employees = JSON.parse(localStorage.getItem("employees")) || [];
 let editIndex = null;
+
+function saveToLocalStorage() {
+  localStorage.setItem("employees", JSON.stringify(employees));
+}
 
 function validE() {
   const email = document.getElementById("mail").value.trim();
@@ -18,47 +22,106 @@ function validE() {
   }
 }
 
-function validateForm() {
-  const name = document.getElementById("name").value.trim();
-  const address = document.getElementById("add").value.trim();
+function validName() {
+  const aname = document.getElementById("name").value.trim();
+  const nameError = document.getElementById("nameError");
+
+  const regex = /^[A-Za-z ]{2,}$/;
+
+  if (!regex.test(aname)) {
+    nameError.innerText = "Enter atleast 2 characters ";
+    return false;
+  } else {
+    nameError.innerText = "";
+    return true;
+  }
+}
+
+function validA() {
+  const address = document.getElementById("add1").value.trim();
+  const addressError = document.getElementById("addressError");
+
+  const regex = /^[a-zA-Z0-9\s,.-/#]{5,}$/;
+
+  if (!regex.test(address)) {
+    addressError.innerText = "Enter a valid address";
+    return false;
+  } else {
+    addressError.innerText = "";
+    return true;
+  }
+}
+
+function validP() {
   const phone = document.querySelector('input[name="phone"]').value.trim();
+  const phoneError = document.getElementById("phoneError");
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    if (phoneError) {
+      phoneError.innerText = "Enter a valid 10-digit phone number";
+    }
+    return false;
+  } else {
+    if (phoneError) {
+      phoneError.innerText = "";
+    }
+    return true;
+  }
+}
+
+ function validateForm() {
   const gender = document.querySelector('input[name="gender"]:checked');
   const hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
   const designation = document.getElementById("designation").value;
 
-  if (name.length < 2) {
-    alert("Name must be at least 2 characters");
+  if (!validName()) {
+    document.getElementById("hide0").style.display = "initial";
     return false;
+  } else {
+    document.getElementById("hide0").style.display = "none";
   }
 
   if (!validE()) {
-    alert("Enter valid email");
+    
+    document.getElementById("hide1").style.display = "initial";
+    return false;   
+  } else {
+    document.getElementById("hide1").style.display = "none";
+  }
+  
+  if (!validA()) {
+    document.getElementById("hide2").style.display = "initial";
     return false;
+  } else {
+    document.getElementById("hide2").style.display = "none";
   }
 
-  if (address.length < 5) {
-    alert("Address must be at least 5 characters");
+  if (!validP()) {
+    document.getElementById("hide3").style.display = "initial";
     return false;
-  }
-
-  if (!/^[0-9]{10}$/.test(phone)) {
-    alert("Phone number must be 10 digits");
-    return false;
+  } else {
+    document.getElementById("hide3").style.display = "none";
   }
 
   if (!gender) {
-    alert("Please select gender");
+    document.getElementById("hide4").style.display = "initial";
     return false;
+  } else {
+    document.getElementById("hide4").style.display = "none";
   }
 
   if (hobbies.length === 0) {
-    alert("Select at least one hobby");
+    document.getElementById("hide5").style.display = "initial";
     return false;
+  } else {
+    document.getElementById("hide5").style.display = "none";
   }
 
   if (designation === "") {
-    alert("Select designation");
+    document.getElementById("hide6").style.display = "initial";
     return false;
+  } else {
+    document.getElementById("hide6").style.display = "none";
   }
 
   return true;
@@ -72,7 +135,7 @@ form.addEventListener("submit", function (e) {
   const employee = {
     name: document.getElementById("name").value,
     email: document.getElementById("mail").value,
-    address: document.getElementById("add").value,
+    address: document.getElementById("add1").value,
     phone: document.querySelector('input[name="phone"]').value,
     gender: document.querySelector('input[name="gender"]:checked').value,
     hobbies: Array.from(
@@ -89,6 +152,7 @@ form.addEventListener("submit", function (e) {
     btn1.innerText = "Submit";
   }
 
+  saveToLocalStorage();
   form.reset();
   renderTable();
 });
@@ -145,7 +209,7 @@ function editEmployee(index) {
 
   document.getElementById("name").value = emp.name;
   document.getElementById("mail").value = emp.email;
-  document.getElementById("add").value = emp.address;
+  document.getElementById("add1").value = emp.address;
   document.querySelector('input[name="phone"]').value = emp.phone;
   document.getElementById("designation").value = emp.designation;
 
@@ -164,6 +228,9 @@ function editEmployee(index) {
 function deleteEmployee(index) {
   if (confirm("Are you sure you want to delete this record?")) {
     employees.splice(index, 1);
+    saveToLocalStorage();
     renderTable();
   }
 }
+
+renderTable();

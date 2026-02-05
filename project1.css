@@ -297,8 +297,21 @@ tbody tr:hover {
 #empTable td button:last-child:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(239, 68, 68, 0.45);
-}
+}   
 
 #empTable button:active {
   transform: scale(0.95);
+}
+
+#hide0,
+#hide1,
+#hide2,
+#hide3,
+#hide4,
+#hide5,
+#hide6 {
+  display: none;
+  font-size: 20px;
+  color: #ef4444;
+  font-weight: bold;
 }

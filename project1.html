@@ -14,7 +14,17 @@
         <div id="topbox">
           <label>
             Name:
-            <input id="name" type="text" name="name" placeholder="Enter name" />
+            <input
+              id="name"
+              type="text"
+              name="aname"
+              placeholder="Enter name"
+              onkeyup="validName()"
+            />
+            <div id="hide0">
+              <br />
+              <span id="nameError" class="Error" style="color: red"></span>
+            </div>
           </label>
 
           <br /><br />
@@ -40,18 +50,25 @@
             Address:
             <textarea
               name="address"
-              id="add"
+              id="add1"
               placeholder="Write your address"
+              onkeyup="validA()"
             ></textarea>
+            <div id="hide2">
+              <br />
+              <span id="addressError" class="error" style="color: red"></span>
+            </div>
           </label>
 
           <br /><br />
 
           <label>
             Phone:
-            <input type="tel" name="phone" placeholder="Enter phone number" />
-          </label>
-
+            <input type="tel" name="phone" placeholder="Enter phone number" onkeyup="validP()" />
+           <div id="hide3">
+              <br />
+              <span id="phoneError" style="color:red"></span>
+            </div>
           <br /><br />
         </div>
         <div>
@@ -71,6 +88,7 @@
             <input type="radio" name="gender" value="other" />
             Other
           </label>
+          <small id="hide4">please select your Gender</small>
         </div>
 
         <br /><br />
@@ -96,6 +114,7 @@
             <input type="checkbox" name="hobbies" value="reading" />
             Reading
           </label>
+          <small id="hide5">please select at least one hobby</small>
         </div>
 
         <br /><br />
@@ -109,6 +128,8 @@
             <option value="ai_engineer">AI Engineer</option>
             <option value="ui_ux_designer">UI/UX Designer</option>
           </select>
+          <br />
+          <small id="hide6">please select a designation</small>
         </div>
         <br /><br />
         <div id="btn">
