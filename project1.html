@@ -20,6 +20,7 @@
               name="aname"
               placeholder="Enter name"
               onkeyup="validName()"
+              required
             />
             <div id="hide0">
               <br />
@@ -37,6 +38,7 @@
               name="email"
               placeholder="email"
               onkeyup="validE()"
+              required
             />
             <div id="hide1">
               <br />
@@ -53,6 +55,7 @@
               id="add1"
               placeholder="Write your address"
               onkeyup="validA()"
+              required
             ></textarea>
             <div id="hide2">
               <br />
@@ -64,7 +67,7 @@
 
           <label>
             Phone:
-            <input type="tel" name="phone" placeholder="Enter phone number" onkeyup="validP()" />
+            <input type="tel" name="phone" placeholder="Enter phone number" onkeyup="validP()"  required/>
            <div id="hide3">
               <br />
               <span id="phoneError" style="color:red"></span>
